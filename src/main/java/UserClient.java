@@ -1,4 +1,3 @@
-import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;

@@ -1,14 +1,10 @@
-import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 public class GetOrderTest {
 
