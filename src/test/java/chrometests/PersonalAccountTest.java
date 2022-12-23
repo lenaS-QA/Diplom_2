@@ -15,7 +15,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class PersonalAccountTest {
     private WebDriver driver;
-    private String email = "hjujhghyhj@yandex.ru";
+    private String email = "harry@yandex.ru";
     private String password = "999999999";
 
     @Before

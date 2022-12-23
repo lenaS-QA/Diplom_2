@@ -17,13 +17,12 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class RegistrationTest {
 
     private WebDriver driver;
-    private String userName = "Chelowyfry";
-    private String email = "hjujhghyhj@yandex.ru";
-    private String password = "999999999";
+    private String userName = "Harry";
+    private String email = "harry@yandex.ru";
+    private String password = "99999999";
 
     @Before
     public void setUp() {
-        //System.setProperty("webdriver.chrome.driver", "/Users/elenasamsonova/Downloads/WebDriver/bin/chromedriver 2");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
