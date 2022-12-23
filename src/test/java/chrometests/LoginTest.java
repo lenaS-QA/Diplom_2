@@ -15,7 +15,7 @@ public class LoginTest {
 
     private WebDriver driver;
     private String email = "harry@yandex.ru";
-    private String password = "999999999";
+    private String password = "9999999";
 
     @Before
     public void setUp() {

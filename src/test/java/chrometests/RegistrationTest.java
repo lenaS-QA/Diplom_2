@@ -19,7 +19,7 @@ public class RegistrationTest {
     private WebDriver driver;
     private String userName = "Harry";
     private String email = "harry@yandex.ru";
-    private String password = "99999999";
+    private String password = "9999999";
 
     @Before
     public void setUp() {
