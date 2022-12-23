@@ -9,12 +9,15 @@ import org.junit.Test;
 public class ChangeUserDataTest {
     private UserClient userClient;
     private User user;
+    private User user1;
     private String accessToken;
+    private String accessToken1;
 
     @Before
     public void setUp() {
         userClient = new UserClient();
         user = UserGenerator.getDefault();
+        user1 = new User("tom25@yandex.ru", "5555555", "Tomas");
     }
 
     @Test
@@ -22,23 +25,27 @@ public class ChangeUserDataTest {
     public void changeEmailAndNameWithLogin() {
         ValidatableResponse responseCreate = userClient.create(user);
         accessToken = responseCreate.extract().path("accessToken");
-        User user1 = new User("tom2@yandex.ru", "55555", "Tomas");
+        userClient.login(Credentials.from(user));
+        //User user1 = new User("tom22@yandex.ru", "55555", "Tomas");
         ValidatableResponse responseChangeData = userClient.changeData(user1, accessToken);
         String actualEmail = responseChangeData.extract().path("user.email");
         String actualName = responseChangeData.extract().path("user.name");
         ValidatableResponse responseLoginWithNewData = userClient.login(Credentials.from(user1));
         int statusCodeResponseChange = responseChangeData.extract().statusCode();
         int statusCodeResponseLogin = responseLoginWithNewData.extract().statusCode();
-        Assert.assertEquals(statusCodeResponseChange, 200);
-        Assert.assertEquals("tom2@yandex.ru", actualEmail);
+        Assert.assertEquals(200, statusCodeResponseChange);
+        Assert.assertEquals("tom25@yandex.ru", actualEmail);
         Assert.assertEquals("Tomas", actualName);
-        Assert.assertEquals(statusCodeResponseLogin, 200);
+        Assert.assertEquals(200, statusCodeResponseLogin);
+        ValidatableResponse responseLogin2 = userClient.login(Credentials.from(user1));
+        accessToken1 = responseLogin2.extract().path("accessToken");
+        userClient.delete(accessToken1);
     }
     @Test
     @DisplayName("Change user data without login")
     public void changeEmailAndNameWithoutLogin() {
         userClient.create(user);
-        User user1 = new User("tom2@yandex.ru", "55555", "Tomas");
+        //User user1 = new User("tom2@yandex.ru", "55555", "Tomas");
         ValidatableResponse responseChangeDataWithoutToken = userClient.changeDataWithoutToken(user1);
         boolean isEmailChanged = responseChangeDataWithoutToken.extract().path("success");
         String message = responseChangeDataWithoutToken.extract().path("message");

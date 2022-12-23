@@ -1,13 +1,10 @@
 import java.util.List;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 import io.qameta.allure.junit4.DisplayName;
-import org.apache.commons.lang3.StringUtils;
 import io.restassured.response.ValidatableResponse;
-import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class OrderCreateTest {

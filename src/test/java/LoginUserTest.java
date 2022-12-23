@@ -19,8 +19,8 @@ public class LoginUserTest {
 
     @Test
     @DisplayName("Check status code of user login")
-    public void UserLoginStatus() {
-        ValidatableResponse responseLogin = userClient.login(Credentials.from(user));;
+    public void userLoginStatus() {
+        ValidatableResponse responseLogin = userClient.login(Credentials.from(user));
         accessToken = responseLogin.extract().path("accessToken");
         int statusCode = responseLogin.extract().statusCode();
         Assert.assertEquals("StatusCode should be 200", 200, statusCode);
