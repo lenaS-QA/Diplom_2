@@ -1,5 +1,4 @@
 package chrometests;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
