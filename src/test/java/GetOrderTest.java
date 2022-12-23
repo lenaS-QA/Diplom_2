@@ -1,5 +1,6 @@
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -58,5 +59,11 @@ public class GetOrderTest {
         Assert.assertEquals(401, statusCodeResponseOrder);
         Assert.assertFalse(isGetOrders);
         Assert.assertEquals("You should be authorised", message);
+    }
+    @After
+    public void cleanUp() {
+        ValidatableResponse responseLogin = userClient.login(Credentials.from(user));
+        accessToken = responseLogin.extract().path("accessToken");
+        userClient.delete(accessToken);
     }
 }
